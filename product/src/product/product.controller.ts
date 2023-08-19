@@ -1,15 +1,18 @@
-import { Controller, Post, Body, Inject } from '@nestjs/common';
+import { Controller } from '@nestjs/common';
 import { ProductService } from './product.service';
-import { CreateProductDto } from './dto/create-product.dto';
-import { Product } from './entities/product.entity';
-import { ClientProxy, MessagePattern } from '@nestjs/microservices';
+import { EventPattern, MessagePattern } from '@nestjs/microservices';
 
-@Controller('product')
+@Controller('product/')
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
-  @MessagePattern('hello')
-  hello(req) {
-    return req;
+  @EventPattern('create')
+  create(req) {
+    return this.productService.create(req);
+  }
+
+  @MessagePattern('get')
+  async get(req) {
+    return await this.productService.get(req);
   }
 }

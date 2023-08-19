@@ -1,20 +1,29 @@
-import { NestFactory } from '@nestjs/core';
-import { Transport, MicroserviceOptions } from '@nestjs/microservices';
-import { AppModule } from './app.module';
+// import { NestFactory } from '@nestjs/core';
+// import { AppModule } from './app.module';
 
-const microservices: MicroserviceOptions = {
-  transport: Transport.NATS,
-  options: {
-    servers: ['nats://localhost:4222'],
-    queue: 'product_queue',
-  },
-};
+// async function bootstrap() {
+//   const app = await NestFactory.create(AppModule);
+
+//   await app.listen(3001);
+// }
+
+// bootstrap();
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
     AppModule,
-    microservices,
+    {
+      transport: Transport.NATS,
+      options: {
+        servers: ['nats://localhost:4222'],
+        queue: 'product_queue',
+      },
+    },
   );
+
   await app.listen();
 }
 bootstrap();

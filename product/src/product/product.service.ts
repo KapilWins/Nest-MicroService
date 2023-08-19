@@ -16,4 +16,9 @@ export class ProductService {
 
     return product.save();
   }
+
+  async get(_id) {
+    const product = await this.productModel.findOne({ _id }).lean();
+    return product;
+  }
 }
