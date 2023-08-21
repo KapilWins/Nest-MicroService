@@ -1,6 +1,7 @@
 # NESTJS WITH MICROSERVICES
 
 Clone down this repository. You will need node and npm installed globally on your machine.
+In this project, user and project are two different microservices and communincated with NATS Server.
 
 ### Technologies Used
 
