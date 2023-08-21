@@ -1,12 +1,9 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { ClientProxy } from '@nestjs/microservices';
+import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  constructor(
-    @Inject('product_queue') private readonly clientOrderApp: ClientProxy,
-  ) {}
-  getHello(req) {
-    return this.clientOrderApp.send(req.endPoint, req);
+  constructor() {}
+  getHello(): string {
+    return 'Hello World!';
   }
 }

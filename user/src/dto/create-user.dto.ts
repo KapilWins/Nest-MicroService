@@ -8,5 +8,5 @@ export class CreateUserDto {
   name: string;
 
   @Prop()
-  description: string;
+  age: number;
 }

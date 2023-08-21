@@ -10,7 +10,7 @@ export class User {
   name: string;
 
   @Prop()
-  description: string;
+  age: number;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

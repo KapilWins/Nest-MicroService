@@ -14,7 +14,20 @@ export class UserService {
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
-    const user = new this.userModel(createUserDto);
-    return user.save();
+    try {
+      const user = new this.userModel(createUserDto);
+      return user.save();
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async findOne(attribute: object) {
+    try {
+      const user = await this.userModel.findById(attribute).lean();
+      return user;
+    } catch (error) {
+      throw error;
+    }
   }
 }

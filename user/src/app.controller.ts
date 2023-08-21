@@ -1,14 +1,18 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Controller } from '@nestjs/common';
 import { UserService } from './app.service';
-import { User } from './entities/user.entity';
-import { CreateUserDto } from './dto/create-user.dto';
+import { EventPattern } from '@nestjs/microservices';
 
-@Controller('user')
+@Controller()
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Post()
-  async create(@Body() data: CreateUserDto): Promise<User> {
+  @EventPattern('create')
+  async create(data) {
     return await this.userService.create(data);
+  }
+
+  @EventPattern('get')
+  async get(attribute) {
+    return await this.userService.findOne(attribute);
   }
 }
