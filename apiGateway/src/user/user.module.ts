@@ -5,10 +5,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
 
 @Module({
   imports: [
-    ClientsModule.register([
-      { name: 'user_queue', transport: Transport.NATS },
-      { name: 'product_queue', transport: Transport.NATS },
-    ]),
+    ClientsModule.register([{ name: 'user_queue', transport: Transport.NATS }]),
   ],
   controllers: [UserController],
   providers: [UserService],

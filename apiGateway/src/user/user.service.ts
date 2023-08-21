@@ -8,7 +8,7 @@ export class UserService {
   async create(req) {
     try {
       //Sending request to the user's microservice
-      return this.userClient.send('create', req);
+      return this.userClient.send('create_user', req);
     } catch (error) {
       throw error;
     }
@@ -16,7 +16,7 @@ export class UserService {
 
   async getById(_id: string) {
     try {
-      return await this.userClient.send('get', _id);
+      return await this.userClient.send('get_user', _id);
     } catch (error) {
       throw error;
     }

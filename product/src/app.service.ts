@@ -11,9 +11,9 @@ export class ProductService {
     private productModel: Model<Product>,
   ) {}
 
-  async create(createProductDto: CreateProductDto): Promise<Product> {
+  async create(data: CreateProductDto): Promise<Product> {
     try {
-      const product = new this.productModel(createProductDto);
+      const product = new this.productModel(data);
 
       return product.save();
     } catch (err) {

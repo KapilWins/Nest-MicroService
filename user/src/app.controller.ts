@@ -6,12 +6,12 @@ import { EventPattern } from '@nestjs/microservices';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @EventPattern('create')
+  @EventPattern('create_user')
   async create(data) {
     return await this.userService.create(data);
   }
 
-  @EventPattern('get')
+  @EventPattern('get_user')
   async get(attribute) {
     return await this.userService.findOne(attribute);
   }
