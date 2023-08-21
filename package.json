@@ -1,0 +1,15 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "lerna-install": "lerna exec npm i",
+    "install-deps": "npm install && lerna bootstrap",
+    "clean-deps": "lerna clean -y",
+    "remove-deps": "npm run clean-deps && rm -rf node_modules",
+    "start": "gnome-terminal --command nats-server && lerna run start --parallel",
+    "build": "lerna run build --parallel"
+  },
+  "devDependencies": {
+    "lerna": "^6.1.0"
+  }
+}

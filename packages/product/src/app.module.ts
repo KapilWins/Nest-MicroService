@@ -8,7 +8,6 @@ import { ProductController } from './app.controller';
 import * as Joi from 'joi';
 @Module({
   imports: [
-    HttpModule,
     ConfigModule.forRoot({
       isGlobal: true,
       validationSchema: Joi.object({
@@ -16,8 +15,9 @@ import * as Joi from 'joi';
       }),
       envFilePath: '.env',
     }),
-    MongooseModule.forFeature([{ name: Product.name, schema: ProductSchema }]),
     MongooseModule.forRoot(process.env.MONGO_URI),
+    HttpModule,
+    MongooseModule.forFeature([{ name: Product.name, schema: ProductSchema }]),
   ],
   controllers: [ProductController],
   providers: [ProductService],
