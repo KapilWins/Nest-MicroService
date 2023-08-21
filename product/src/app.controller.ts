@@ -1,8 +1,8 @@
 import { Controller } from '@nestjs/common';
-import { ProductService } from './app..service';
-import { EventPattern, MessagePattern } from '@nestjs/microservices';
+import { ProductService } from './app.service';
+import { EventPattern } from '@nestjs/microservices';
 
-@Controller('product/')
+@Controller()
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
@@ -11,7 +11,7 @@ export class ProductController {
     return this.productService.create(req);
   }
 
-  @MessagePattern('get')
+  @EventPattern('get')
   async get(req) {
     return await this.productService.get(req);
   }

@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { Product } from './entities/product.entity';
 import { InjectModel } from '@nestjs/mongoose';
@@ -12,13 +12,21 @@ export class ProductService {
   ) {}
 
   async create(createProductDto: CreateProductDto): Promise<Product> {
-    const product = new this.productModel(createProductDto);
+    try {
+      const product = new this.productModel(createProductDto);
 
-    return product.save();
+      return product.save();
+    } catch (err) {
+      throw err;
+    }
   }
 
-  async get(_id) {
-    const product = await this.productModel.findOne({ _id }).lean();
-    return product;
+  async get(attribute: object) {
+    try {
+      const product = await this.productModel.findOne(attribute).lean();
+      return product;
+    } catch (err) {
+      throw err;
+    }
   }
 }
