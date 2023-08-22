@@ -11,11 +11,11 @@ In this project, user and project are two different microservices and communinca
 
 ### Installation and Setup Instructions
 
-`npm run install-deps`
+`lerna bootstrap`
 
 To Start Server:
 
-`npm run start`
+`make start`
 
 To Access API on:
 
