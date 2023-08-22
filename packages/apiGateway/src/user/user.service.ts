@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable()
 export class UserService {
@@ -16,9 +17,11 @@ export class UserService {
 
   async getById(_id: string) {
     try {
-      return await this.userClient.send('get_user', _id);
+      const rsp = await this.userClient.send('get_user', _id);
+      const user = await lastValueFrom(rsp);
+      return user;
     } catch (error) {
-      throw error;
+      return error;
     }
   }
 }

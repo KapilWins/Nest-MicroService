@@ -6,7 +6,7 @@
     "install-deps": "npm install && lerna bootstrap",
     "clean-deps": "lerna clean -y",
     "remove-deps": "npm run clean-deps && rm -rf node_modules",
-    "start": "gnome-terminal --command nats-server && lerna run start --parallel",
+    "start": "gnome-terminal --command nats-server && lerna exec --parallel -- npm run start:dev",
     "build": "lerna run build --parallel"
   },
   "devDependencies": {

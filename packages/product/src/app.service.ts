@@ -1,8 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { HttpStatus, Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { Product } from './entities/product.entity';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { RpcException } from '@nestjs/microservices';
 
 @Injectable()
 export class ProductService {
@@ -24,6 +25,12 @@ export class ProductService {
   async get(attribute: object) {
     try {
       const product = await this.productModel.findOne(attribute).lean();
+      if (!product) {
+        throw new RpcException({
+          message: 'User not found !',
+          status: HttpStatus.NOT_FOUND,
+        });
+      }
       return product;
     } catch (err) {
       throw err;
