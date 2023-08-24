@@ -7,7 +7,7 @@ services:
     ports:
       - "27018:27017"
     volumes:
-      - mongo-data:/var/lib/mongo
+      - mongo-data:/data/db
 
   nats-server:
     container_name: nats-server
@@ -42,4 +42,4 @@ services:
       MONGO_URI: mongodb://mongo:27017/nestMicro
       NATS_URI: nats://nats-server:4222
 volumes:
-  mongo-data:
+  mongo-data: {}
