@@ -15,7 +15,7 @@ In this project, user and project are two different microservices and communinca
 
 To Start Server:
 
-`make start`
+`npm run start`
 
 To Access API on:
 

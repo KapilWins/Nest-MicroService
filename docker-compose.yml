@@ -1,0 +1,45 @@
+version: "3.7"
+services:
+  mongo:
+    container_name: mongo
+    image: mongo:6.0.3
+    restart: always
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo-data:/var/lib/mongo
+
+  nats-server:
+    container_name: nats-server
+    image: nats:latest
+    restart: always
+    ports:
+      - "4222:4222"
+
+  api-gateway:
+    ports:
+      - "0.0.0.0:3000:3000"
+    container_name: api-gateway
+    restart: always
+    build: ./packages/api-gateway
+    environment:
+      MONGO_URI: mongodb://mongo:27017/nestMicro
+      NATS_URI: nats://nats-server:4222
+
+  user:
+    container_name: user
+    restart: always
+    build: ./packages/user
+    environment:
+      MONGO_URI: mongodb://mongo:27017/nestMicro
+      NATS_URI: nats://nats-server:4222
+
+  product:
+    container_name: product
+    restart: always
+    build: ./packages/product
+    environment:
+      MONGO_URI: mongodb://mongo:27017/nestMicro
+      NATS_URI: nats://nats-server:4222
+volumes:
+  mongo-data:
