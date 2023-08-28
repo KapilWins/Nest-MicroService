@@ -7,8 +7,8 @@ export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
   @EventPattern('create_product')
-  create(req) {
-    return this.productService.create(req);
+  async create(req) {
+    return await this.productService.create(req);
   }
 
   @EventPattern('get_product')

@@ -3,6 +3,7 @@
   "packages": [
     "packages/api-gateway",
     "packages/product",
-    "packages/user"
+    "packages/user",
+    "packages/logger"
   ]
 }
