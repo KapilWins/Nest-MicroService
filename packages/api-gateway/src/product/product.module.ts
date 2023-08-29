@@ -10,7 +10,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         name: 'product_queue',
         transport: Transport.NATS,
         options: {
-          servers: [process.env.NATS_URI],
+          servers: [process.env.NATS_URI ?? 'nats://localhost:4222'],
         },
       },
     ]),

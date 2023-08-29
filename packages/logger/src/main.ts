@@ -8,6 +8,7 @@ async function bootstrap() {
 		options: {
 			servers: [process.env.NATS_URI],
 			queue: "logger_queue",
+			debug: false,
 		},
 	});
 

@@ -10,6 +10,7 @@ async function bootstrap() {
       options: {
         servers: [process.env.NATS_URI],
         queue: 'product_queue',
+        debug: false,
       },
     },
   );

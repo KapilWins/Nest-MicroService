@@ -10,7 +10,7 @@ export class LoggerService {
   async create(req) {
     try {
       //Sending request to the user's microservice
-      return this.loggerClient.send('Log_created', req);
+      return this.loggerClient.emit('Log_created', req);
     } catch (error) {
       throw error;
     }
