@@ -7,7 +7,7 @@ export class AppController {
 	constructor(private readonly appService: AppService) {}
 
 	@EventPattern("Log_created")
-	async create(data) {
-		return await this.appService.getHello(data);
+	async info(data) {
+		return await this.appService.info(data);
 	}
 }
