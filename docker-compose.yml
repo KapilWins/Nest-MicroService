@@ -41,5 +41,14 @@ services:
     environment:
       MONGO_URI: mongodb://mongo:27017/nestMicro
       NATS_URI: nats://nats-server:4222
+
+  logger:
+    container_name: logger
+    restart: always
+    build: ./packages/logger
+    environment:
+      MONGO_URI: mongodb://mongo:27017/nestMicro
+      NATS_URI: nats://nats-server:4222
+      LOG_PATH: ../../../log/
 volumes:
   mongo-data: {}

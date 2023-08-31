@@ -18,9 +18,14 @@ import * as path from "path";
 					level: "error",
 				}),
 				new winston.transports.File({
-					dirname: path.join(__dirname, process.env.LOG_PATH, "warn"), //path to where save loggin result
-					filename: "warn.log", //name of file where will be saved logging result
+					dirname: path.join(__dirname, process.env.LOG_PATH, "warn"),
+					filename: "warn.log",
 					level: "warn",
+				}),
+				new winston.transports.File({
+					dirname: path.join(__dirname, process.env.LOG_PATH, "debug"),
+					filename: "debug.log",
+					level: "debug",
 				}),
 				new winston.transports.File({
 					dirname: path.join(__dirname, process.env.LOG_PATH, "info"),

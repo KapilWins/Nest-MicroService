@@ -3,11 +3,20 @@ import { Logger } from "winston";
 
 @Injectable()
 export class AppService {
-	constructor(
-		@Inject("winston")
-		private readonly logger: Logger,
-	) {}
-	info(data) {
-		return this.logger.info(data);
+	constructor(@Inject("winston") private readonly logger: Logger) {}
+	info(message) {
+		return this.logger.info(message);
+	}
+
+	debug(message) {
+		return this.logger.debug({ level: "log", message });
+	}
+
+	warn(message) {
+		return this.logger.warn(message);
+	}
+
+	error(message) {
+		return this.logger.error(message);
 	}
 }
