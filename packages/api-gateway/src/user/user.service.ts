@@ -13,9 +13,10 @@ export class UserService {
   async create(req) {
     try {
       //Sending request to the user's microservice
-      await this.loggerService.create('Inside user create service');
+      this.loggerService.log('Inside user create service');
       return this.userClient.send('create_user', req);
     } catch (error) {
+      this.loggerService.error(error.message);
       throw error;
     }
   }

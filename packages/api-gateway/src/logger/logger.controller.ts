@@ -7,6 +7,6 @@ export class LoggerController {
 
   @Post('create')
   async create(@Body() req) {
-    return this.loggerService.create(req);
+    return this.loggerService.log(req);
   }
 }

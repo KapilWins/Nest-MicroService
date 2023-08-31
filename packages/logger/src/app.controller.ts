@@ -10,4 +10,9 @@ export class AppController {
 	async info(data) {
 		return await this.appService.info(data);
 	}
+
+	@EventPattern("error_created")
+	async error(data) {
+		return await this.appService.error(data);
+	}
 }
