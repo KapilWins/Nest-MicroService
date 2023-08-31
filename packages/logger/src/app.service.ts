@@ -9,7 +9,7 @@ export class AppService {
 	}
 
 	debug(message) {
-		return this.logger.debug({ level: "log", message });
+		return this.logger.debug(message);
 	}
 
 	warn(message) {

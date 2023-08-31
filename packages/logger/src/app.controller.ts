@@ -8,6 +8,6 @@ export class AppController {
 
 	@EventPattern("Log_created")
 	async info(data) {
-		return await this.appService.debug(data);
+		return await this.appService.info(data);
 	}
 }

@@ -13,22 +13,22 @@ import * as path from "path";
 			transports: [
 				new winston.transports.Console(),
 				new winston.transports.File({
-					dirname: path.join(__dirname, process.env.LOG_PATH, "error"), //path to where save loggin result
+					dirname: path.join(__dirname, process.env.LOG_PATH), //path to where save loggin result
 					filename: "error.log", //name of file where will be saved logging result
 					level: "error",
 				}),
 				new winston.transports.File({
-					dirname: path.join(__dirname, process.env.LOG_PATH, "warn"),
+					dirname: path.join(__dirname, process.env.LOG_PATH),
 					filename: "warn.log",
 					level: "warn",
 				}),
 				new winston.transports.File({
-					dirname: path.join(__dirname, process.env.LOG_PATH, "debug"),
+					dirname: path.join(__dirname, process.env.LOG_PATH),
 					filename: "debug.log",
 					level: "debug",
 				}),
 				new winston.transports.File({
-					dirname: path.join(__dirname, process.env.LOG_PATH, "info"),
+					dirname: path.join(__dirname, process.env.LOG_PATH),
 					filename: "info.log",
 					level: "info",
 				}),
